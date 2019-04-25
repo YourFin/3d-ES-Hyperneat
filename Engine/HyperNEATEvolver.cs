@@ -47,7 +47,19 @@ namespace Engine
         {
             logOutput = new StreamWriter(outputFolder + "logfile.txt");
             IdGenerator idgen = new IdGenerator();
-            ea = new EvolutionAlgorithm(new Population(idgen, GenomeFactory.CreateGenomeList(experiment.DefaultNeatParameters, idgen, experiment.InputNeuronCount, experiment.OutputNeuronCount, experiment.DefaultNeatParameters.pInitialPopulationInterconnections, populationSize)), experiment.PopulationEvaluator, experiment.DefaultNeatParameters);
+            ea = new EvolutionAlgorithm(new Population(
+                idgen, 
+                GenomeFactory.CreateGenomeList(
+                    experiment.DefaultNeatParameters, 
+                    idgen, 
+                    experiment.InputNeuronCount, 
+                    experiment.OutputNeuronCount, 
+                    experiment.DefaultNeatParameters.pInitialPopulationInterconnections, 
+                    populationSize)
+                    ), 
+                experiment.PopulationEvaluator, 
+                experiment.DefaultNeatParameters
+                );
         }
 
         public void initializeEvolution(int populationSize, NeatGenome seedGenome)
@@ -59,7 +71,13 @@ namespace Engine
             }
             logOutput = new StreamWriter(outputFolder + "logfile.txt");
             IdGenerator idgen = new IdGeneratorFactory().CreateIdGenerator(seedGenome);
-            ea = new EvolutionAlgorithm(new Population(idgen, GenomeFactory.CreateGenomeList(seedGenome, populationSize, experiment.DefaultNeatParameters, idgen)), experiment.PopulationEvaluator, experiment.DefaultNeatParameters);
+            ea = new EvolutionAlgorithm(new Population(idgen, 
+                    GenomeFactory.CreateGenomeList(
+                        seedGenome, 
+                        populationSize, 
+                        experiment.DefaultNeatParameters, 
+                        idgen)), 
+                experiment.PopulationEvaluator, experiment.DefaultNeatParameters);
         }
 		public void initializeEvolutionFromPopFile(string fname) {
 			XmlDocument doc = new XmlDocument();

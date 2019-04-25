@@ -378,6 +378,7 @@ namespace SharpNeatLib.Evolution
 			bool regenerate = false;
 			if(neatParameters.noveltySearch && neatParameters.noveltyFixed)
             {
+                //// TODO PJ: Figure out dafaq this magic 20 is about
                 if((generation+1)%20==0)
                 {
                     this.noveltyFixed.add_most_novel(pop);
@@ -399,19 +400,19 @@ namespace SharpNeatLib.Evolution
 			
             if(!regenerate)
             {
-			CreateOffSpring();
-			pop.TrimAllSpeciesBackToElite();
+    			CreateOffSpring();
+    			pop.TrimAllSpeciesBackToElite();
 
-			// Add offspring to the population.
-			int genomeBound = offspringList.Count;
-			for(int genomeIdx=0; genomeIdx<genomeBound; genomeIdx++)
-				pop.AddGenomeToPopulation(this, offspringList[genomeIdx]);
+    			// Add offspring to the population.
+    			int genomeBound = offspringList.Count;
+    			for(int genomeIdx=0; genomeIdx<genomeBound; genomeIdx++)
+    				pop.AddGenomeToPopulation(this, offspringList[genomeIdx]);
 
             }
             
 			// Adjust the speciation threshold to try and keep the number of species within defined limits.
 			if(!neatParameters.multiobjective)
-			AdjustSpeciationThreshold();
+			    AdjustSpeciationThreshold();
 
 		//----- Stage 2. Evaluate genomes / Update stats.
 			populationEvaluator.EvaluatePopulation(pop, this);			

@@ -8,7 +8,7 @@
     <ProjectGuid>{4EE94BAF-AA0D-4CC1-9244-5FD986AC36F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Engine</RootNamespace>
+    <RootNamespace>simulator</RootNamespace>
     <AssemblyName>Engine</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
